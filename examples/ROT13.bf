@@ -1,3 +1,6 @@
+[
+  This example program is from https://en.wikipedia.org/wiki/Brainfuck
+]
 -,+[                         Read first character and start outer character reading loop
     -[                       Skip forward if character is 0
         >>++++[>++++++++<-]  Set up divisor (32) for division loop
