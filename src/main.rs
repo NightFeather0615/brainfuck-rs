@@ -70,7 +70,7 @@ impl Command {
               loop_start = index;
               None
             },
-            Token::LoopEnd => panic!("Unclosed delimiter"),
+            Token::LoopEnd => panic!("Unclosed delimiter at {}", index)
           };
           
           if let Some(command) = command {
@@ -100,12 +100,15 @@ impl Command {
       }
     );
 
+    if loop_depth != 0 {
+      panic!("Unclosed delimiter at {}", loop_start);
+    }
+
     commands
   }
 }
 
 
-#[derive(Debug, Clone)]
 struct Machine {
   tape: Vec<u8>,
   ptr: usize
