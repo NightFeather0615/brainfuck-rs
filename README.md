@@ -1,4 +1,4 @@
-# Simple Brainfuck interpreter for learning Rust and Brainfuck.
+# Simple Brainfuck interpreter for learning Rust and Brainfuck
 
 ## Usage
 ```
