@@ -56,7 +56,7 @@ impl Command {
     let mut loop_start: usize = 0;
 
     tokens.iter().enumerate().for_each(
-      |(index, token)| {
+      |(index, token): (usize, &Token)| {
         if loop_depth == 0 {
           let command: Option<Command> = match token {
             Token::IncrementPtr => Some(Self::IncrementPtr),
@@ -173,12 +173,12 @@ fn main() {
     std::process::exit(1);
   }
 
-  let filename = &args[1];
+  let filename: &String = &args[1];
 
-  let mut bf_file = File::open(&args[1]).expect(
+  let mut bf_file: File = File::open(&args[1]).expect(
     &format!("Source file `{}` not found", filename)
   );
-  let mut bf_source = String::new();
+  let mut bf_source: String = String::new();
 
   bf_file.read_to_string(&mut bf_source).expect(
     &format!("Failed to read `{}`", filename)
